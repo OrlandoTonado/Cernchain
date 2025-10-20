@@ -1,0 +1,43 @@
+# Node
+node_modules/
+**/node_modules/
+
+# Next.js
+.next/
+.next-cache/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# OS / Editor
+.DS_Store
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Hardhat build
+artifacts/
+cache/
+typechain/
+coverage/
+coverage.json
+
+# Env
+.env
+.env.*
+
+# Dist
+build/
+dist/
+
+# Frontend generated
+out/
+
+# Ignore video and large media not needed
+*.mp4
+*.mov
+*.zip
