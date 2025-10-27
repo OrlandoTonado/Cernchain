@@ -1,0 +1,20 @@
+import { SDK_CDN_URL } from "./constants";
+
+export class RelayerSDKLoader {
+  load(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      if ((window as any).relayerSDK) return resolve();
+
+      const script = document.createElement("script");
+      script.src = SDK_CDN_URL;
+      script.type = "text/javascript";
+      script.async = true;
+      script.onload = () => resolve();
+      script.onerror = () => reject(new Error("Relayer SDK load failed"));
+      document.head.appendChild(script);
+    });
+  }
+}
+
+
+
