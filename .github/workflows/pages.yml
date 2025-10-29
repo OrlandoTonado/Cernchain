@@ -25,19 +25,19 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-          cache-dependency-path: action/certchain-frontend/package-lock.json
+          cache-dependency-path: certchain-frontend/package-lock.json
       - name: Install deps
-        working-directory: action/certchain-frontend
+        working-directory: certchain-frontend
         run: npm ci --no-audit --no-fund
       - name: Build static site
-        working-directory: action/certchain-frontend
+        working-directory: certchain-frontend
         env:
           NEXT_PUBLIC_BASE_PATH: /Cernchain
         run: npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: action/certchain-frontend/out
+          path: certchain-frontend/out
   deploy:
     environment:
       name: github-pages
