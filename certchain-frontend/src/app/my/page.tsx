@@ -22,7 +22,13 @@ export default function MyPage() {
         setLoading(true);
         const bp = new ethers.BrowserProvider(provider);
         const iFace = new ethers.Interface(CertChainRegistryABI as any);
-        const topic0 = iFace.getEvent("CertificateIssued").topicHash;
+        const ev = iFace.getEvent("CertificateIssued");
+        if (!ev) {
+          // If ABI is incorrect or event missing, stop early to avoid runtime errors
+          setItems([]);
+          return;
+        }
+        const topic0 = ev.topicHash;
         const topicRecipient = ethers.zeroPadValue(account as `0x${string}` as string, 32);
         const logs = await bp.getLogs({
           address: CertChainRegistryAddress,

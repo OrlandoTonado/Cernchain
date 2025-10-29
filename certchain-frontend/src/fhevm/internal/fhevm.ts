@@ -38,7 +38,7 @@ export async function createFhevmInstance(parameters: {
           const meta = await p.send("fhevm_relayer_metadata", []);
           return await MockFhevmInstance.create(p, p, {
             aclContractAddress: meta.ACLAddress,
-            chainId: (await p.getNetwork()).chainId,
+            chainId: Number((await p.getNetwork()).chainId),
             gatewayChainId: 55815,
             inputVerifierContractAddress: meta.InputVerifierAddress,
             kmsContractAddress: meta.KMSVerifierAddress,
